@@ -1,0 +1,21 @@
+{
+  "name": "order_history_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedtwice/Order-History-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohamedtwice/Order-History-App/issues"
+  },
+  "homepage": "https://github.com/mohamedtwice/Order-History-App#readme",
+  "dependencies": {},
+  "devDependencies": {},
+  "description": ""
+}
