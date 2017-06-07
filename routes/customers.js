@@ -32,23 +32,36 @@ router.get('/customers', function(req, res) {
   });
 });
 
-router.get('/orderinfo', function(req, res) {
+router.get('/:id', function(req, res) {
+  console.log(req.params.id);
+  var id = req.params.id;
   pool.connect(function(err, client, done) {
-    console.log("hitting /orderinfo route");
-    client.query('SELECT (customer_id), (first_name, last_name), (order_id), (street), (city), (zip), (description), (products.unit_price), (quantity)  FROM customers JOIN addresses ON customers.id = addresses.customer_id JOIN orders ON orders.address_id = addresses.id JOIN line_items ON line_items.order_id = orders.id JOIN products ON products.id = line_items.product_id;', function(err, result) {
+    if (err) {
+      console.log('Error connecting to the DB', err);
+      res.sendStatus(500);
       done();
-      if (err) {
-        console.log('Error querying the DB', err);
-        res.sendStatus(500);
-        return;
-      }
+      return;
+    }
 
-      console.log('Got rows from the DB:', result.rows);
-      res.send(result.rows);
-    });
+    client.query('SELECT customers.id, order_id,' +
+      ' first_name, last_name, street, city, state, zip, address_type,' +
+      ' quantity, description, products.unit_price, total' +
+      '  FROM customers JOIN addresses ON customers.id = addresses.customer_id ' +
+      ' JOIN orders ON orders.address_id = addresses.id' +
+      '  JOIN line_items on line_items.order_id = orders.id ' +
+      'JOIN products on products.id = line_items.product_id WHERE customers.id = ' + id,
+      function(err, result) {
+        done();
+        if (err) {
+          console.log('Error querying the DB', err);
+          res.sendStatus(500);
+          return;
+        }
+
+        console.log('Got rows from the DB:', result.rows);
+        res.send(result.rows);
+      });
   });
 });
-
-
 
 module.exports = router;
