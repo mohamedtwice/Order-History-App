@@ -1,0 +1,26 @@
+#list-li {
+  padding: 0px;
+}
+
+.li-text {
+  font-size: 1.5em;
+  margin-right: 15px;
+}
+
+#showorders {
+  margin-bottom: 5px;
+}
+
+.list-unstyled {
+  padding: 10px;
+}
+
+.clientBox {
+  padding: 20px;
+  background: #f5f6f7;
+  border-right: 3px solid #333;
+}
+
+.orderBox {
+  padding: 20px;
+}
