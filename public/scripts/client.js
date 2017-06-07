@@ -37,12 +37,16 @@ function showOrdersButton() {
       console.log('back from route customers', response);
       for (var i = 0; i < response.length; i++) {
         var orderInfo = '<tr data-id="' + response[i].id + '">';
-        orderInfo += '<td data-id="' + response[i].id + '>' + response[i].first_name + ' ' + response[i].last_name + '</td>';
-        orderInfo += '<td data-id="' + response[i].id + '>' + response[i].order_id + '</td>';
-        orderInfo += '<td data-id="' + response[i].id + '>' + response[i].unit_price + '</td>';
-        orderInfo += '<td data-id="' + response[i].id + '>' + response[i].quantity + '</td>';
-        orderInfo += '<td data-id="' + response[i].id + '>' + response[i].street + '</td>';
-        orderInfo += '<td data-id="' + response[i].id + '>' + response[i].city + ', ' + response[i].state + ' ' + response[i].zip + '</td>';
+        orderInfo += '<td>' + response[i].order_id + '</td>';
+        orderInfo += '<td>' + response[i].first_name + '</td>';
+        orderInfo += '<td>' + response[i].last_name + '</td>';
+        orderInfo += '<td>' + response[i].order_id + '</td>';
+        orderInfo += '<td>' + response[i].unit_price + '</td>';
+        orderInfo += '<td>' + response[i].quantity + '</td>';
+        orderInfo += '<td>' + response[i].street + '</td>';
+        orderInfo += '<td>' + response[i].city + '</td>';
+        orderInfo += '<td>' + response[i].state + '</td>';
+        orderInfo += '<td>' + response[i].zip + '</td>';
         orderInfo += '</tr>';
         $('#myTable tr:last').after(orderInfo);
       } //success
