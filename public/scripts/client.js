@@ -29,7 +29,7 @@ var customerList = function() {
 function showOrdersButton() {
   console.log('show orders click', $(this).data('id'));
   var id = $(this).data('id');
-
+  $('#myTable td').empty();
   $.ajax({
     type: 'GET',
     url: '/get/' + id,
